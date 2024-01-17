@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const ProductManager = require('./ProductManager.js'); // Asegúrate de ajustar la ruta según la ubicación de tu archivo ProductManager
+const ProductManager = require('./ProductManager.js');
 
 const productManager = new ProductManager('productos.json');
 
@@ -21,10 +21,10 @@ app.get('/products', async (req, res) => {
   }
 });
 
-app.get('/products/:id', async (req, res) => {
+app.get('/products/:pid', async (req, res) => {
   try {
-    const { id } = req.params;
-    const product = await productManager.getProductById(id);
+    const { pid } = req.params;
+    const product = await productManager.getProductById(pid);
 
     if (product) {
       return res.json(product);

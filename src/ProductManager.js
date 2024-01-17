@@ -11,7 +11,7 @@ class ProductManager {
       const data = fs.readFileSync(this.path, 'utf8');
       this.products = JSON.parse(data);
     } catch (error) {
-      // Si el archivo no existe o hay un error al leerlo, inicializamos con un arreglo vacío.
+     
       this.products = [];
     }
   }
@@ -22,7 +22,7 @@ class ProductManager {
   }
 
   addProduct(product) {
-    // Asignar un id autoincrementable
+    
     const newProduct = {
       id: this.products.length + 1,
       ...product
@@ -55,7 +55,7 @@ class ProductManager {
     const productIndex = this.products.findIndex((p) => p.id === productId);
 
     if (productIndex !== -1) {
-      // Evitar que se elimine el ID
+      
       this.products[productIndex] = { ...this.products[productIndex], ...updatedFields, id: productId };
       this.saveProducts();
       console.log("Producto actualizado correctamente:", this.products[productIndex]);
